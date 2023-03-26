@@ -30,10 +30,7 @@ app.post('/items', (req, res) =>{
     res.send("We have received your request and pushed to db")
 });
 
-app.patch('/items/:id', (req, res) => {
 
-
-});
 
 app.delete('/items/:id', (req, res) => {
     res.send(` ${JSON.stringify(items[req.params.id - 1])} The item shown has been deleted no going back :P`);
