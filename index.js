@@ -1,41 +1,21 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
+const itemsRouter = require('./routes/items')
 const port = 5000;
 
-let items = [
-    {
-        itemName: "Apple 🍎",
-        price: 2.99,
-        stock: 48
-    },
-    {
-        itemName: "Carrot 🥕",
-        price: 1.99,
-        stock: 98
-    }
-];
+app.set("view engine", "ejs");
 
+app.use(express.urlencoded({extended: true}))
 app.use(bodyParser.json());
 
 
-app.get('/items', (req, res) => {
-    res.send(items);
+app.get('/', (req, res) => {
+    res.render('index');
 });
 
+app.use('/items', itemsRouter);
 
-
-app.post('/items', (req, res) =>{
-    items.push(req.body);
-    res.send("We have received your request and pushed to db")
-});
-
-
-
-app.delete('/items/:id', (req, res) => {
-    res.send(` ${JSON.stringify(items[req.params.id - 1])} The item shown has been deleted no going back :P`);
-    items.splice(req.params.id - 1, 1);
-});
 
 
 app.listen(port, () => {

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+</head>
+<body>
+    <h1>This is a about section</h1>
+    <a href="/">Bring me home!</a>
+
+    <% items.forEach(item => { %>
+        <div>
+            <h3><%= item.itemName %></h3>
+            <p><%= item.price %></p>
+            <p><%= item.stock %></p>
+        </div>
+    <% }) %>
+
+
+
+
+    <form action="/items" method="post">
+        <legend>Add a new item (no form validation dont make a mistake)</legend>
+        <label for="name">Enter the Items name:</label>
+        <input type="text" name="name" id="name" placeholder="string"> <br>
+
+        <label for="price">Enter the Price:</label>
+        <input type="number" name="price" placeholder="number"> <br>
+
+        <label for="stock">Enter the stock</label>
+        <input type="number" name="stock" placeholder="number"> <br>
+
+        <input type="submit" value="submit">
+        
+    </form>
+
+</body>
+</html>
